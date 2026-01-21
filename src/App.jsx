@@ -2,13 +2,13 @@ import React from "react";
 import "./index.css";
 import Head from "./components/Head";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import store from "./utils/store";
 import Shorts from "./components/Shorts";
 
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
     path: "/",
     element: <Body />,
