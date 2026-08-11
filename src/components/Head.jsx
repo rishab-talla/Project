@@ -18,7 +18,7 @@ const Head = () => {
       bg-white dark:bg-black text-black dark:text-white z-20"
     >
       <div className="flex items-center gap-8">
-        <i className="fa-solid fa-bars ml-4 text-lg cursor-pointer"></i>
+        {/* <i className="fa-solid fa-bars ml-4 text-lg cursor-pointer"></i> */}
         <a href="/">
           <img
             className="w-[50px] ml-24"

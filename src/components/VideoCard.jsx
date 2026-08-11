@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const VideoCard = ({ info }) => {
   if (!info) return null;
@@ -59,10 +60,8 @@ const VideoCard = ({ info }) => {
   const { title, channelTitle, thumbnails } = snippet;
 
   return (
-    <a
-      href={`https://www.youtube.com/watch?v=${videoId}`}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link to={`/watch/${videoId}`}
+    state={{ video: info }}
     >
       <div className="w-[24rem] p-2 cursor-pointer">
         <img
@@ -87,7 +86,7 @@ const VideoCard = ({ info }) => {
           )}
         </ul>
       </div>
-    </a>
+    </Link>
   );
 };
 

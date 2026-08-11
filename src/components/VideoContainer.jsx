@@ -56,6 +56,7 @@ const VideoContainer = () => {
 
     const res = await fetch(url);
     const json = await res.json();
+    console.log(json)
 
     setVideos((prev) => [...prev, ...(json.items || [])]);
     setPageToken(json.nextPageToken || "");

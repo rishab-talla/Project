@@ -22,7 +22,7 @@ const appRouter = createHashRouter([
         element: <MainContainer />,
       },
       {
-        path: "watch",
+        path: "watch/:videoId",
         element: <WatchPage />,
       },
       {
