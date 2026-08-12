@@ -3,10 +3,14 @@ import "./index.css";
 import Head from "./components/Head";
 import Body from "./components/Body";
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import store from "./utils/store";
 import Shorts from "./components/Shorts";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import LikedVideos from "./components/LikedVideos";
 
 const appRouter = createHashRouter([
   {
@@ -29,9 +33,23 @@ const appRouter = createHashRouter([
         path: "shorts",
         element: <Shorts />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
+      {
+        path: "liked",
+        element: <LikedVideos />,
+      },
     ],
   },
 ]);
+
+
 
 function App() {
   return (

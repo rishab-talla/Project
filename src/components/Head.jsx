@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
 
   const handleSearch = () => {
     if (!searchQuery.trim()) return;
@@ -53,7 +56,36 @@ const Head = () => {
         {theme === "dark" ? "🌞" : "🌙"}
       </button>
 
-      <i className="fa-regular fa-user w-[30px] text-lg cursor-pointer"></i>
+      {user ? (
+        <div className="flex items-center gap-3">
+          <span className="text-white text-sm hidden md:block bg-gray-500 rounded-full px-4 py-2 cursor-pointer">
+            {user.email?.charAt(0).toUpperCase()}
+          </span>
+
+          <button
+            onClick={logout}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full"
+          >
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div className="flex items-center gap-3">
+          <Link
+            to="/login"
+            className="border border-gray-600 text-blue-400 px-4 py-2 rounded-full hover:bg-[#272727]"
+          >
+            Login
+          </Link>
+
+          <Link
+            to="/signup"
+            className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700"
+          >
+            Sign Up
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

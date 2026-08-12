@@ -16,13 +16,15 @@ const Sidebar = () => {
 
         <li className="font-bold mt-4">
           <i className="fa-solid fa-thumbs-up mr-2"></i>
-          <Link to={"/"}>Liked Videos</Link>
+          <Link to={"/liked"}
+
+          >Liked Videos</Link>
         </li>
 
-        <li className="font-bold mt-4">
+        {/* <li className="font-bold mt-4">
           <i className="fa-solid fa-clock mr-2"></i>
           <Link to={"/"}>Watch History</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
