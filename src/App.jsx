@@ -11,6 +11,7 @@ import Shorts from "./components/Shorts";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import LikedVideos from "./components/LikedVideos";
+import WatchLater from "./components/WatchLater";
 
 const appRouter = createHashRouter([
   {
@@ -45,6 +46,11 @@ const appRouter = createHashRouter([
         path: "liked",
         element: <LikedVideos />,
       },
+      {
+        path: "watch-later",
+        element: <WatchLater />,
+      },
+      
     ],
   },
 ]);

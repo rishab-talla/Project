@@ -15,6 +15,12 @@ import {
   isVideoLiked,
 } from "../utils/likedVideos";
 
+import {
+  saveWatchLaterVideo,
+  removeWatchLaterVideo,
+  isVideoInWatchLater,
+} from "../utils/watchLater";
+
 const WatchPage = () => {
   const { videoId } = useParams();
   const location = useLocation();
@@ -37,6 +43,9 @@ const WatchPage = () => {
 
   const [isLiked, setIsLiked] = useState(false);
 
+  const [isWatchLater, setIsWatchLater] =
+  useState(false);
+
   // --------------------------------------------------
   // Check whether this video is already liked
   // --------------------------------------------------
@@ -50,6 +59,20 @@ const WatchPage = () => {
       setIsLiked(false);
     }
   }, [user, videoId]);
+
+
+  useEffect(() => {
+  if (user && videoId) {
+    const saved = isVideoInWatchLater(
+      user.uid,
+      videoId
+    );
+
+    setIsWatchLater(saved);
+  } else {
+    setIsWatchLater(false);
+  }
+}, [user, videoId]);
 
   // --------------------------------------------------
   // Fetch video details
@@ -138,6 +161,33 @@ const WatchPage = () => {
       setIsLiked(true);
     }
   };
+
+  const handleWatchLater = () => {
+  if (!user) {
+    navigate("/login");
+    return;
+  }
+
+  if (!video) {
+    return;
+  }
+
+  if (isWatchLater) {
+    removeWatchLaterVideo(
+      user.uid,
+      video.id
+    );
+
+    setIsWatchLater(false);
+  } else {
+    saveWatchLaterVideo(
+      user.uid,
+      video
+    );
+
+    setIsWatchLater(true);
+  }
+};
 
   // --------------------------------------------------
   // Loading
@@ -380,6 +430,19 @@ const WatchPage = () => {
               : "👍 Like Video"}
           </button>
 
+          <button
+  onClick={handleWatchLater}
+  className={`rounded-lg px-4 py-2 font-semibold ${
+    isWatchLater
+      ? "bg-red-600 text-white"
+      : "bg-gray-500 text-white"
+  }`}
+>
+  {isWatchLater
+    ? "✓ Added to Watch Later"
+    : "Watch Later"}
+</button>
+
         </div>
 
         {/* Description */}
@@ -421,14 +484,14 @@ const WatchPage = () => {
         )}
 
         {/* Comments */}
-        {statistics?.commentCount && (
+        {/* {statistics?.commentCount && (
           <p className="text-gray-400 mt-4">
             {Number(
               statistics.commentCount
             ).toLocaleString()}{" "}
             comments
           </p>
-        )}
+        )} */}
 
       </div>
 

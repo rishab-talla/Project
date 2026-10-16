@@ -6,7 +6,7 @@ const Sidebar = () => {
     <div className="px-6 pt-2 fixed top-16 bg-white dark:bg-black text-black dark:text-white">
       <ul className="flex flex-col gap-2">
         <li className="font-bold mt-4">
-          <i className="fa-solid fa-house mr-2"></i>
+          {/* <i className="fa-solid fa-house mr-2"></i> */}
           <Link to={"/"}>Home</Link>
         </li>
 
@@ -15,10 +15,17 @@ const Sidebar = () => {
         </li>
 
         <li className="font-bold mt-4">
-          <i className="fa-solid fa-thumbs-up mr-2"></i>
+          {/* <i className="fa-solid fa-thumbs-up mr-2"></i> */}
           <Link to={"/liked"}
 
           >Liked Videos</Link>
+        </li>
+
+        <li className="font-bold mt-4">
+          {/* <i className="fa-solid fa-clock mr-2"></i> */}
+          <Link to={"/watch-later"}
+
+          >Watch Later</Link>
         </li>
 
         {/* <li className="font-bold mt-4">

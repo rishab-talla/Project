@@ -31,7 +31,8 @@ const LikedVideos = () => {
 
   if (!user) {
     return (
-      <div className="bg-black min-h-screen text-white flex flex-col justify-center items-center">
+      <div className="bg-black min-h-screen text-white flex flex-col justify-center items-center
+       ">
         <h1 className="text-2xl font-bold mb-4">
           Please login to see your liked videos
         </h1>
@@ -47,7 +48,7 @@ const LikedVideos = () => {
   }
 
   return (
-    <div className="bg-black min-h-screen text-white p-6">
+    <div className="bg-black min-h-screen text-white p-6 pl-[10rem] pt-[3rem]">
 
       <h1 className="text-2xl font-bold mb-6">
         Liked Videos
